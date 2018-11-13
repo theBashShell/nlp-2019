@@ -1,4 +1,7 @@
 from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.cross_validation import train_test_split
+from sklearn.linear_model import LogisticRegression
+
 
 # open and read file
 def open_file(data):
@@ -25,6 +28,18 @@ features = vectorizer.fit_transform(
     data
 )
 
-# print(features);
-# print(vectorizer);
+norm_feat = features.toarray()
+print(norm_feat)
 
+X_train, X_test, y_train, y_test  = train_test_split(
+        norm_feat, 
+        label,
+        train_size=0.80, 
+        random_state=1234)
+
+
+
+
+ 
+logistic_model = LogisticRegression()
+print(logistic_model)
